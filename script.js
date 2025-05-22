@@ -6,7 +6,7 @@ function validatePhone(e) {
     .trim();
 }
 
-// Percentage validation
+// Percentage validationgghjgjg
 document.getElementById("percentage").addEventListener("change", (e) => {
   const value = Number(e.target.value);
   if (value > 100 || value < 0) {
