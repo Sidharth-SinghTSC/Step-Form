@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <h1>Employee Step Form</h1>
+
+    <div class="progress-bar">
+      <div class="step active" data-step="1">
+        <div class="step-number">1</div>
+        <div class="step-label">Personal Info</div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-number">2</div>
+        <div class="step-label">Education</div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-number">3</div>
+        <div class="step-label">Experience</div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-number">4</div>
+        <div class="step-label">Summary</div>
+      </div>
+    </div>
+
+    <!--Employee personal details-->
+    <form id="employeeForm" class="custom-form">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required />
+      <span id="nameError" style="color: red; font-size: 12px;"></span><br>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" placeholder="Enter your age" required />
+      <span id="ageError" style="color: red; font-size: 12px;"></span>
+
+      <label for="gender">Gender:</label>
+      <select name="gender" id="gender" required>
+        <option value="">Select your gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <span id="genderError" style="color: red;font-size: 12px;"></span>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      <span id="emailError" style="color: red;font-size: 12px;"></span>
+
+      <label for="phoneNumber">Phone Number:</label>
+      <input type="text" maxlength="11" id="phoneNumber" name="phoneNumber" oninput="validatePhone(event)"
+        placeholder="Enter 10-digit number" required />
+      <span id="phoneError" style="color: red;font-size: 12px;"></span>
+
+      <div class="form_btn">
+        <button type="button" class="btn next-btn" data-next="educationForm">
+          Save & Next
+        </button>
+      </div>
+    </form>
+
+    <!--Education details-->
+
+    <form id="educationForm" class="custom-form">
+      <h2 class="heading">Education</h2>
+      <div id="education_entries">
+        <div class="education_entry">
+          <div class="course">
+
+            <div class="form_group">
+              <label for="courseName">Course Name:</label>
+              <input type="text" class="courseName" id="courseName" name="courseName" required />
+              <span class="error courseNameError" style="color: red; font-size: 12px;"></span>
+            </div>
+
+            <div class="form_group">
+              <label for="courseYear">Course Year:</label>
+              <input type="number" id="courseYear" class="courseYear" name="courseYear" min="1900" max="2099"
+                required />
+              <span class="error courseYearError" style="color: red; font-size: 12px;"></span>
+            </div>
+
+            <div class="form_group">
+              <label for="percentage">Percentage:</label>
+              <input type="number" id="percentage" class="percentage" min="0" max="100" name="percentage" />
+              <span class="error percentageError" style="color: red; font-size: 12px;"></span>
+            </div>
+
+            <div class="form_btn">
+              <div id="add_button" class="btn_increase">
+                <button class="btn_inc" type="button">+</button>
+              </div>
+              <div class="btn_decrease">
+                <button class="btn_dec" type="button">-</button>
+              </div>
+            </div>
+
+            <span id="alert"></span>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="navigateBtn">
+        <button type="button" class="btn prev-btn" data-prev="employeeForm">
+          Previous
+        </button>
+        <button type="button" class="btn next-btn" data-next="experienceForm">
+          Save &amp; Next
+        </button>
+      </div>
+    </form>
+
+    <!--Experience form section-->
+
+    <form id="experienceForm" class="custom-form experience_details">
+      <h2 class="heading">Experience</h2>
+      <div id="experience_details"></div>
+      <div class="navigateBtn">
+        <button type="button" class="btn prev-btn" data-prev="educationForm">
+          Previous
+        </button>
+        <button type="button" class="btn next-btn" data-next="summaryForm">
+          Save &amp; Next
+        </button>
+      </div>
+    </form>
+
+    <!--Summary form section -->
+
+    <form id="summaryForm" class="custom-form summary">
+      <h2>Professional Summary</h2>
+      <div class="form_group">
+        <label for="summary">Professional Summary</label>
+        <input class="summary_input" id="summary"
+          placeholder="Write summary about your Past experiences, projects and about yourself" />
+        <span id="summaryError" style="color: red; font-size: 12px;"></span>
+      </div>
+
+      <div class="form_group">
+        <label for="skills">Skills</label>
+        <input type="text" id="skills" placeholder="Skills" />
+        <span id="skillsError" style="color: red; font-size: 12px;"></span>
+      </div>
+
+      <div class="navigateBtn">
+        <button type="button" class="btn prev-btn" data-prev="experienceForm">
+          Previous
+        </button>
+        <button class="btn-submit" type="button">Submit</button>
+      </div>
+    </form>
+
+    <div id="displayData" class="display-section" style="display: none;">
+      <h2>Employee Details Summary</h2>
+      <div id="displayContent"></div>
+      <button onclick="window.print()" class="btn-submit">Print</button>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
